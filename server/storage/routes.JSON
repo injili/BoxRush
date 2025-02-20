@@ -1,0 +1,36 @@
+[
+  {
+    "routeId": "RT-001",
+    "origin": "Nairobi",
+    "destination": "Mombasa",
+    "estimatedTime": "8h",
+    "checkpoints": [
+      "Nairobi Warehouse",
+      "Machakos",
+      "Voi",
+      "Mombasa Delivery Hub"
+    ],
+    "trafficPatterns": {
+      "morning": "Moderate",
+      "afternoon": "Heavy",
+      "evening": "Light"
+    }
+  },
+  {
+    "routeId": "RT-002",
+    "origin": "Nairobi",
+    "destination": "Kisumu",
+    "estimatedTime": "7h",
+    "checkpoints": [
+      "Nairobi Warehouse",
+      "Naivasha",
+      "Kericho",
+      "Kisumu Delivery Hub"
+    ],
+    "trafficPatterns": {
+      "morning": "Light",
+      "afternoon": "Moderate",
+      "evening": "Heavy"
+    }
+  }
+]

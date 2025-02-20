@@ -1,0 +1,32 @@
+[
+  {
+    "shipmentId": "SHIP-001",
+    "cost": 4500,
+    "currency": "KES",
+    "insurance": {
+      "insuredValue": 50000,
+      "status": "Covered"
+    },
+    "paymentStatus": "Paid",
+    "breakdown": {
+      "baseFare": 3000,
+      "fuelSurcharge": 1000,
+      "insuranceFee": 500
+    }
+  },
+  {
+    "shipmentId": "SHIP-002",
+    "cost": 3200,
+    "currency": "KES",
+    "insurance": {
+      "insuredValue": 30000,
+      "status": "Not Covered"
+    },
+    "paymentStatus": "Unpaid",
+    "breakdown": {
+      "baseFare": 2500,
+      "fuelSurcharge": 700,
+      "insuranceFee": 0
+    }
+  }
+]

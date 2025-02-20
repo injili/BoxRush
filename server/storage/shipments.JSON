@@ -1,0 +1,107 @@
+[
+  {
+    "shipmentId": "SHIP-001",
+    "orderNumber": "ORD-2024001",
+    "customerName": "John Doe",
+    "customerContact": "+254700123456",
+    "shipmentType": "Express",
+    "origin": "Nairobi Warehouse",
+    "destination": "Mombasa, Kenya",
+    "carrier": "FastTrack Logistics",
+    "driver": {
+      "name": "Peter Mwangi",
+      "contact": "+254711223344"
+    },
+    "status": "In Transit",
+    "statusUpdates": [
+      { "status": "Pending", "timestamp": "2025-02-18T08:00:00Z" },
+      { "status": "Picked Up", "timestamp": "2025-02-18T10:30:00Z" },
+      { "status": "In Transit", "timestamp": "2025-02-18T14:00:00Z" }
+    ],
+    "eta": "2025-02-20T15:00:00Z",
+    "actualDeliveryTime": null,
+    "delayReason": null,
+    "packages": [
+      {
+        "packageId": "PKG-001A",
+        "weight": "15kg",
+        "dimensions": "40x30x20 cm",
+        "fragile": true,
+        "temperatureSensitive": false,
+        "customsInfo": null
+      }
+    ],
+    "tracking": {
+      "gpsCoordinates": { "latitude": -1.286389, "longitude": 36.817223 },
+      "speed": "65km/h",
+      "route": "Nairobi - Mombasa Highway",
+      "checkpoints": ["Nairobi Warehouse", "Machakos", "Voi"]
+    },
+    "financials": {
+      "cost": 4500,
+      "currency": "KES",
+      "insurance": {
+        "insuredValue": 50000,
+        "status": "Covered"
+      },
+      "paymentStatus": "Paid"
+    }
+  },
+  {
+    "shipmentId": "SHIP-002",
+    "orderNumber": "ORD-2024002",
+    "customerName": "Alice Wanjiru",
+    "customerContact": "+254722456789",
+    "shipmentType": "Standard",
+    "origin": "Nairobi Warehouse",
+    "destination": "Kisumu, Kenya",
+    "carrier": "Reliable Freight",
+    "driver": {
+      "name": "James Otieno",
+      "contact": "+254733667788"
+    },
+    "status": "Delayed",
+    "statusUpdates": [
+      { "status": "Pending", "timestamp": "2025-02-17T09:00:00Z" },
+      { "status": "Picked Up", "timestamp": "2025-02-17T12:00:00Z" },
+      { "status": "In Transit", "timestamp": "2025-02-17T15:00:00Z" },
+      { "status": "Delayed", "timestamp": "2025-02-18T11:00:00Z" }
+    ],
+    "eta": "2025-02-19T18:00:00Z",
+    "actualDeliveryTime": null,
+    "delayReason": "Vehicle Breakdown",
+    "packages": [
+      {
+        "packageId": "PKG-002A",
+        "weight": "10kg",
+        "dimensions": "35x25x15 cm",
+        "fragile": false,
+        "temperatureSensitive": false,
+        "customsInfo": null
+      },
+      {
+        "packageId": "PKG-002B",
+        "weight": "5kg",
+        "dimensions": "20x15x10 cm",
+        "fragile": true,
+        "temperatureSensitive": true,
+        "customsInfo": "Perishable - Keep below 5°C"
+      }
+    ],
+    "tracking": {
+      "gpsCoordinates": { "latitude": -0.102, "longitude": 34.7617 },
+      "speed": "0km/h",
+      "route": "Nairobi - Kisumu Road",
+      "checkpoints": ["Nairobi Warehouse", "Naivasha", "Kericho"]
+    },
+    "financials": {
+      "cost": 3200,
+      "currency": "KES",
+      "insurance": {
+        "insuredValue": 30000,
+        "status": "Not Covered"
+      },
+      "paymentStatus": "Unpaid"
+    }
+  }
+]

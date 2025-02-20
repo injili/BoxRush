@@ -1,0 +1,24 @@
+[
+  {
+    "driverId": "DR-001",
+    "name": "Peter Mwangi",
+    "contact": "+254711223344",
+    "assignedShipments": ["SHIP-001"],
+    "performance": {
+      "onTimeDeliveries": 45,
+      "lateDeliveries": 5,
+      "averageDeliveryTime": "4h 30m"
+    }
+  },
+  {
+    "driverId": "DR-002",
+    "name": "James Otieno",
+    "contact": "+254733667788",
+    "assignedShipments": ["SHIP-002"],
+    "performance": {
+      "onTimeDeliveries": 30,
+      "lateDeliveries": 8,
+      "averageDeliveryTime": "6h 15m"
+    }
+  }
+]

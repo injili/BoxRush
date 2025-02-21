@@ -26,6 +26,7 @@ wss.on("connection", (ws) => {
   console.log("New Websocket client connected");
   clients.push(ws);
 
+  sendData(ws);
   ws.on("close", () => {
     clients = clients.filter((client) => client.readyState === WebSocket.OPEN);
     console.log("Client disconnected.");
@@ -35,6 +36,22 @@ wss.on("connection", (ws) => {
 wss.on("error", (err) => {
   console.error("WebSocket server error:", err);
 });
+
+const sendData = (ws) => {
+  fs.readFile(DRIVERS, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading DRIVERS file", err);
+      return;
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      ws.send(JSON.stringify(jsonData));
+    } catch (parseError) {
+      console.error("Error parsing DRIVERS json", parseError);
+    }
+  });
+};
 
 const broadcastData = (data) => {
   clients.forEach((client) => {

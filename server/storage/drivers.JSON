@@ -3,7 +3,13 @@
     "driverId": "DR-001",
     "name": "Peter Mwangi",
     "contact": "+254711223344",
+    "carrier": {
+      "company": "FastTrack Carriers",
+      "vessel": "Truck",
+      "vesselID": "TK-0014"
+    },
     "assignedShipments": ["SHIP-001"],
+    "pickUpLocation": "Mombasa, Kenya",
     "performance": {
       "onTimeDeliveries": 45,
       "lateDeliveries": 5,
@@ -11,10 +17,16 @@
     }
   },
   {
-    "driverId": "DR-012",
+    "driverId": "DR-002",
     "name": "James Otieno",
     "contact": "+254733667788",
+    "carrier": {
+      "company": "TwinTrack Carriers",
+      "vessel": "Truck",
+      "vesselID": "TK-004"
+    },
     "assignedShipments": ["SHIP-002"],
+    "pickUpLocation": "Mombasa, Kenya",
     "performance": {
       "onTimeDeliveries": 30,
       "lateDeliveries": 8,

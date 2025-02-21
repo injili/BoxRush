@@ -1,16 +1,16 @@
 const express = require("express");
-const webSocket = require("ws");
+const WebSocket = require("ws");
 const fs = require("fs");
 const path = require("path");
 const chokidar = require("chokidar");
 const cors = require("cors");
 
 const app = express();
-const PORT = 5000;
-const DRIVERS = path.join(__dirname, "storage/drivers.JSON");
-const FINANCIALS = path.join(__dirname, "storage/financials.JSON");
-const ROUTES = path.join(__dirname, "storage/routes.JSON");
-const SHIPMENTS = path.join(__dirname, "storage/shipments.JSON");
+const PORT = 5050;
+const DRIVERS = path.join(__dirname, "storage/drivers.json");
+// const FINANCIALS = path.join(__dirname, "storage/financials.json");
+// const ROUTES = path.join(__dirname, "storage/routes.json");
+// const SHIPMENTS = path.join(__dirname, "storage/shipments.json");
 
 app.use(cors());
 
@@ -27,14 +27,18 @@ wss.on("connection", (ws) => {
   clients.push(ws);
 
   ws.on("close", () => {
-    clients = clients.filter((client) => client !== ws);
+    clients = clients.filter((client) => client.readyState === WebSocket.OPEN);
     console.log("Client disconnected.");
   });
 });
 
+wss.on("error", (err) => {
+  console.error("WebSocket server error:", err);
+});
+
 const broadcastData = (data) => {
   clients.forEach((client) => {
-    if (client.readyState === webSocket.OPEN) {
+    if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(data));
     }
   });

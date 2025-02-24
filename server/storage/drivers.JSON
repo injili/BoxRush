@@ -8,7 +8,7 @@
       "vessel": "Truck",
       "vesselID": "TK-0014"
     },
-    "assignedShipments": ["SHIP-001"],
+    "assignedShipments": ["SHIP-002"],
     "route": "RT-001",
     "performance": {
       "onTimeDeliveries": 45,

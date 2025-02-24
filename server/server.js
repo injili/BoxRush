@@ -7,7 +7,7 @@ const cors = require("cors");
 
 const app = express();
 const PORT = 5050;
-const CUSTOMERS = path.json(__dirname, "storage/customers.json");
+const CUSTOMERS = path.join(__dirname, "storage/customers.json");
 const DRIVERS = path.join(__dirname, "storage/drivers.json");
 const FINANCIALS = path.join(__dirname, "storage/financials.json");
 const ROUTES = path.join(__dirname, "storage/routes.json");
@@ -23,11 +23,15 @@ const wss = new WebSocket.Server({ server });
 
 let clients = [];
 
-wss.on("connection", (ws) => {
+wss.on("connection", (ws, req) => {
+  const params = new URLSearchParams(req.url.split("?")[1]);
+  const source = params.get("source");
+
   console.log("New Websocket client connected");
+  ws.source = source;
   clients.push(ws);
 
-  sendData(ws);
+  sendData(ws, source);
   ws.on("close", () => {
     clients = clients.filter((client) => client.readyState === WebSocket.OPEN);
     console.log("Client disconnected.");
@@ -38,25 +42,44 @@ wss.on("error", (err) => {
   console.error("WebSocket server error:", err);
 });
 
-const sendData = (ws) => {
-  fs.readFile(DRIVERS, "utf8", (err, data) => {
-    if (err) {
-      console.error("Error reading DRIVERS file", err);
-      return;
-    }
+const sendData = (ws, source) => {
+  if (source === "dashboard") {
+    fs.readFile(SHIPMENTS, "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading DRIVERS file", err);
+        return;
+      }
 
-    try {
-      const jsonData = JSON.parse(data);
-      ws.send(JSON.stringify(jsonData));
-    } catch (parseError) {
-      console.error("Error parsing DRIVERS json", parseError);
-    }
-  });
+      try {
+        const jsonData = JSON.parse(data);
+        ws.send(JSON.stringify(jsonData));
+      } catch (parseError) {
+        console.error("Error parsing DRIVERS json", parseError);
+      }
+    });
+  } else if (source === "driver") {
+    fs.readFile(DRIVERS, "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading DRIVERS file", err);
+        return;
+      }
+
+      try {
+        const jsonData = JSON.parse(data);
+        ws.send(JSON.stringify(jsonData));
+      } catch (parseError) {
+        console.error("Error parsing DRIVERS json", parseError);
+      }
+    });
+  }
 };
 
-const broadcastData = (data) => {
+const broadcastData = (data, targetSource) => {
   clients.forEach((client) => {
-    if (client.readyState === WebSocket.OPEN) {
+    if (
+      client.readyState === WebSocket.OPEN &&
+      client.source === targetSource
+    ) {
       client.send(JSON.stringify(data));
     }
   });
@@ -73,7 +96,61 @@ chokidar.watch(DRIVERS).on("change", () => {
 
     try {
       const jsonData = JSON.parse(data);
-      broadcastData(jsonData);
+      broadcastData(jsonData, "driver");
+    } catch (parseError) {
+      console.error("Error, parsing JSON:", parseError);
+    }
+  });
+});
+
+chokidar.watch(CUSTOMERS).on("change", () => {
+  console.log("JSON file changes, sending update data...");
+
+  fs.readFile(CUSTOMERS, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading JSON file:", err);
+      return;
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      broadcastData(jsonData, "customer");
+    } catch (parseError) {
+      console.error("Error, parsing JSON:", parseError);
+    }
+  });
+});
+
+chokidar.watch(SHIPMENTS).on("change", () => {
+  console.log("JSON file changes, sending update data...");
+
+  fs.readFile(SHIPMENTS, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading JSON file:", err);
+      return;
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      broadcastData(jsonData, "dashboard");
+    } catch (parseError) {
+      console.error("Error, parsing JSON:", parseError);
+    }
+  });
+});
+
+chokidar.watch(FINANCIALS).on("change", () => {
+  console.log("JSON file changes, sending update data...");
+
+  fs.readFile(FINANCIALS, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading JSON file:", err);
+      return;
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      broadcastData(jsonData, "financials");
     } catch (parseError) {
       console.error("Error, parsing JSON:", parseError);
     }

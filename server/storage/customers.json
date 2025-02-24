@@ -1,0 +1,14 @@
+[
+  {
+    "cusomerId": "CU-001",
+    "name": "Peter Njangi",
+    "contact": "+254711523344",
+    "shipments": ["SHIP-001", "SHIP-002"]
+  },
+  {
+    "cusomerId": "CU-004",
+    "name": "John Mwaura",
+    "contact": "+254744433344",
+    "shipments": ["SHIP-001"]
+  }
+]

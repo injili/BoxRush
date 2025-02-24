@@ -7,10 +7,11 @@ const cors = require("cors");
 
 const app = express();
 const PORT = 5050;
+const CUSTOMERS = path.json(__dirname, "storage/customers.json");
 const DRIVERS = path.join(__dirname, "storage/drivers.json");
-// const FINANCIALS = path.join(__dirname, "storage/financials.json");
-// const ROUTES = path.join(__dirname, "storage/routes.json");
-// const SHIPMENTS = path.join(__dirname, "storage/shipments.json");
+const FINANCIALS = path.join(__dirname, "storage/financials.json");
+const ROUTES = path.join(__dirname, "storage/routes.json");
+const SHIPMENTS = path.join(__dirname, "storage/shipments.json");
 
 app.use(cors());
 

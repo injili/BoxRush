@@ -5,11 +5,13 @@ import Customer from "./pages/Customer";
 import Dashboard from "./pages/Dashboard";
 import Driver from "./pages/Driver";
 import Shipments from "./pages/Shipments";
+import DarkModeToggle from "./components/darkModeToggle";
 
 const Layout = () => {
   return (
-    <div className="cursor-pointer bg-first min-h-screen flex flex-col">
+    <div className="bg-white dark:bg-black dark:text-zinc-100 min-h-screen flex flex-col">
       <Navigation />
+      <DarkModeToggle />
       <div className="flex-grow flex flex-col justify-center">
         <Outlet />
       </div>

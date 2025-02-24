@@ -9,12 +9,7 @@
       "Machakos",
       "Voi",
       "Mombasa Delivery Hub"
-    ],
-    "trafficPatterns": {
-      "morning": "Moderate",
-      "afternoon": "Heavy",
-      "evening": "Light"
-    }
+    ]
   },
   {
     "routeId": "RT-002",
@@ -26,11 +21,6 @@
       "Naivasha",
       "Kericho",
       "Kisumu Delivery Hub"
-    ],
-    "trafficPatterns": {
-      "morning": "Light",
-      "afternoon": "Moderate",
-      "evening": "Heavy"
-    }
+    ]
   }
 ]

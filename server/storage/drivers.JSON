@@ -9,11 +9,10 @@
       "vesselID": "TK-0014"
     },
     "assignedShipments": ["SHIP-001"],
-    "pickUpLocation": "Mombasa, Kenya",
+    "route": "RT-001",
     "performance": {
       "onTimeDeliveries": 45,
-      "lateDeliveries": 5,
-      "averageDeliveryTime": "4h 30m"
+      "lateDeliveries": 5
     }
   },
   {
@@ -26,11 +25,10 @@
       "vesselID": "TK-004"
     },
     "assignedShipments": ["SHIP-002"],
-    "pickUpLocation": "Mombasa, Kenya",
+    "route": "RT-001",
     "performance": {
       "onTimeDeliveries": 30,
-      "lateDeliveries": 8,
-      "averageDeliveryTime": "6h 15m"
+      "lateDeliveries": 8
     }
   }
 ]

@@ -1,32 +1,58 @@
 [
   {
     "shipmentId": "SHIP-001",
-    "cost": 4500,
+    "date": "2025-02-01",
+    "cost": 45000,
     "currency": "KES",
-    "insurance": {
-      "insuredValue": 50000,
-      "status": "Covered"
-    },
     "paymentStatus": "Paid",
     "breakdown": {
       "baseFare": 3000,
       "fuelSurcharge": 1000,
       "insuranceFee": 500
-    }
+    },
+    "insurance": {
+      "insuredValue": 50000,
+      "status": "Covered"
+    },
+    "insuranceClaimFiled": false
   },
   {
     "shipmentId": "SHIP-002",
-    "cost": 3200,
+    "date": "2025-01-01",
+    "cost": 32050,
     "currency": "KES",
-    "insurance": {
-      "insuredValue": 30000,
-      "status": "Not Covered"
-    },
     "paymentStatus": "Unpaid",
     "breakdown": {
       "baseFare": 2500,
       "fuelSurcharge": 700,
       "insuranceFee": 0
+    },
+    "insurance": {
+      "insuredValue": 30000,
+      "status": "Not Covered"
+    },
+    "insuranceClaimFiled": false
+  },
+  {
+    "shipmentId": "SHIP-003",
+    "date": "2024-12-01",
+    "cost": 89000,
+    "currency": "KES",
+    "paymentStatus": "Paid",
+    "breakdown": {
+      "baseFare": 3000,
+      "fuelSurcharge": 1000,
+      "insuranceFee": 500
+    },
+    "insurance": {
+      "insuredValue": 50000,
+      "status": "Covered"
+    },
+    "insuranceClaimFiled": true,
+    "claimDetails": {
+      "claimId": "CLM-1001",
+      "claimAmount": 10000,
+      "claimStatus": "Approved"
     }
   }
 ]

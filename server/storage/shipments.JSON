@@ -27,15 +27,6 @@
     "tracking": {
       "route": "RT-001",
       "checkpoints": 2
-    },
-    "financials": {
-      "cost": 25000,
-      "currency": "KES",
-      "insurance": {
-        "insuredValue": 50000,
-        "status": "Covered"
-      },
-      "paymentStatus": "Paid"
     }
   },
   {
@@ -74,15 +65,6 @@
     "tracking": {
       "route": "RT-002",
       "checkpoints": 4
-    },
-    "financials": {
-      "cost": 30500,
-      "currency": "KES",
-      "insurance": {
-        "insuredValue": 40000,
-        "status": "Covered"
-      },
-      "paymentStatus": "UnPaid"
     }
   }
 ]

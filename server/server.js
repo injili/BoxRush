@@ -71,6 +71,34 @@ const sendData = (ws, source) => {
         console.error("Error parsing DRIVERS json", parseError);
       }
     });
+  } else if (source === "financials") {
+    fs.readFile(FINANCIALS, "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading DRIVERS file", err);
+        return;
+      }
+
+      try {
+        const jsonData = JSON.parse(data);
+        ws.send(JSON.stringify(jsonData));
+      } catch (parseError) {
+        console.error("Error parsing DRIVERS json", parseError);
+      }
+    });
+  } else if (source === "customer") {
+    fs.readFile(CUSTOMERS, "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading DRIVERS file", err);
+        return;
+      }
+
+      try {
+        const jsonData = JSON.parse(data);
+        ws.send(JSON.stringify(jsonData));
+      } catch (parseError) {
+        console.error("Error parsing DRIVERS json", parseError);
+      }
+    });
   }
 };
 
